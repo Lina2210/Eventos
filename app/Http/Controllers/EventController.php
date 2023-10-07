@@ -14,6 +14,7 @@ class EventController extends Controller
     {
         $events = Evento::all();
         return response()->json(['events' => $events]);
+
     }
 
     /**

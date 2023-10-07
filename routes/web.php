@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
 
     return view('welcome');
@@ -22,3 +25,7 @@ Route::get('/', function () {
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
 Route::get('/events/create', [EventController::class, 'create']);
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
+
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
+
+
