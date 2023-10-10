@@ -10,14 +10,40 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
 
-        $eventos = Evento::select('name', 'description', 'location', 'date', 'imagen')
+    public function eventoActual()
+    {
+        $eventoActual = Evento::select('name', 'description', 'location', 'date', 'imagen')
             ->where('type', 'evento actual')
             ->get();
 
-        return response()->json($eventos);
+        return response()->json($eventoActual);
+    }
+
+    public function eventoProximo()
+    {
+    $eventoProximo = Evento::select('name', 'description', 'location', 'date', 'imagen')
+        ->where('type', 'evento proximo')
+        ->get();
+
+    return response()->json($eventoProximo);
+    }
+
+    public function eventosAnteriores()
+    {
+    $eventosAnteriores = Evento::select('name', 'imagen')
+        ->where('type', 'evento anterior')
+        ->get();
+
+    return response()->json($eventosAnteriores);
+    }
+
+
+
+    public function index()
+    {
+
+        return view('welcome');
 
 
     }

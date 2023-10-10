@@ -30,7 +30,9 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
 Route::group(['middleware' => ['cors']], function () {
     //Rutas a las que se permitirá acceso
-    Route::get('/eventoactual', 'App\Http\Controllers\EventController@index');
+    Route::get('/eventoactual', 'App\Http\Controllers\EventController@eventoActual');
+    Route::get('/eventoproximo', 'App\Http\Controllers\EventController@eventoproximo');
+    Route::get('/eventosanteriores', 'App\Http\Controllers\EventController@eventosanteriores');
 });
 
 
