@@ -28,4 +28,11 @@ Route::post('/events', [EventController::class, 'store'])->name('events.store');
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 
+Route::group(['middleware' => ['cors']], function () {
+    //Rutas a las que se permitirá acceso
+    Route::get('/eventoactual', 'App\Http\Controllers\EventController@index');
+});
+
+
+
 

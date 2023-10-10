@@ -12,8 +12,13 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Evento::all();
-        return response()->json(['events' => $events]);
+
+        $eventos = Evento::select('name', 'description', 'location', 'date', 'imagen')
+            ->where('type', 'evento actual')
+            ->get();
+
+        return response()->json($eventos);
+
 
     }
 
